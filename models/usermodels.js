@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
       unique: true,
       trim: true
     },
+
     email: {
       type: String,
       unique: true,
@@ -18,16 +19,19 @@ const userSchema = new mongoose.Schema({
       required: [true, 'A user must have an email'],
       validate: [validator.isEmail,'must have an email yh yh yh']
     },
+
     role:{
       type: String,
       enum: ['user', 'guide', 'lead-guide', 'admin'],
       default:'user',
     },
+
     password: {
       type: String,
-      required: [true, 'A tour must have a group size'],
+      required: [true, 'A user must have a password'],
       select:false,
     },
+
     confirmPassword: {
       type: String,
       required: [true, 'password must correlate'],
@@ -81,9 +85,9 @@ const userSchema = new mongoose.Schema({
 
       next()
   })
+  
 
 // query middleware
-
 userSchema.pre(/^find/, function(next){
   this.find({ isDeleted: false });
 

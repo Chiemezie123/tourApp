@@ -9,7 +9,8 @@ const reviewRouter = require(`${__dirname}/routes/reviewRoutes`);
 const bookingRouter = require(`${__dirname}/routes/bookingRoutes`);
 const AllError = require(`${__dirname}/ErrorHandling/AllError.js`);
 const getGlobalError = require(`${__dirname}/globalError`);
-const { globalError } = getGlobalError;
+const {globalError} = getGlobalError;
+
 const helmet = require('helmet');
 const mongosantize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
@@ -70,7 +71,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// body parser , convert jscon to object
+// body parser , convert json to object
 app.use(express.json());
 
 // app.use((req, res, next) => {

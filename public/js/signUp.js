@@ -8,7 +8,7 @@ const api = axios.create({
 export const logout = async () => {
   try {
     console.log('fach');
-    const response = await api.get('/api/v1/users/logout');
+    const response = await api.get('/api/v1/users/signup');
     if (response) {
       console.log(response, 'response');
       const { status, message } = response.data;

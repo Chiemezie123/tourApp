@@ -47,3 +47,28 @@ export const mapContainer =(locations)=>{
       },
     });
 } 
+
+
+
+
+
+// import { Loader } from '@googlemaps/js-api-loader';
+
+// const loader = new Loader({
+//   apiKey: 'YOUR_API_KEY',
+//   version: 'weekly', // or 'beta', 'daily'
+//   libraries: ['places', 'drawing'], // optional libraries
+// });
+
+// loader.load().then((google) => {
+//   // Google Maps API is now loaded and available as 'google'
+
+//   // Get the map container element
+//   const mapContainer = document.getElementById('map');
+
+//   // Create a new map instance
+//   const map = new google.maps.Map(mapContainer, {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8,
+//   });
+// });

@@ -3,7 +3,7 @@ const router = express.Router();
 const authController = require(`${__dirname}/../controller/authController.js`);
 const viewController = require(`${__dirname}/../controller/viewController.js`);
 const bookingController = require(`${__dirname}/../controller/bookingController.js`);
-const { toLandingPage, toOverview, toTour,login, userAccount ,getUserBookings} = viewController;
+const { toLandingPage, toOverview, toTour,login, userAccount ,getUserBookings, signUp} = viewController;
 const {isLoggedIn,protect} = authController;
 const {creatingBookingAndRedirectingUser}= bookingController
 // VIEW ROUTES
@@ -23,6 +23,8 @@ router.route('/userAccount').get(isLoggedIn,userAccount);
 router.route('/tour/:slug').get(isLoggedIn, toTour);
 
 router.route('/login').get(isLoggedIn, login);
+
+router.route('/signUp').get(isLoggedIn, signUp);
 
 module.exports = router;
 

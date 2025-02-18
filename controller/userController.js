@@ -51,7 +51,6 @@ exports.userUploadImage = upload.single('photo');
 //   next();
 // });
 
-
 const bodyFunc = (body, ...elements) => {
   let newObj = {};
   Object.keys(body).forEach((el) => {
@@ -74,7 +73,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     req.body.photo = req.file.filename;
   }
 
-  console.log(req.file,'SHOW MEEEEE WEY PHOTO')
+  console.log(req.file, 'SHOW MEEEEE WEY PHOTO');
   // console.log(path.join(__dirname, '../public/img/users'), 'the PATH');
   if (req.body.password) {
     const message = new AllError(

@@ -54,6 +54,12 @@ exports.login = catchAsync(async (req, res) => {
   });
 });
 
+exports.signUp = catchAsync(async (req, res) => {
+  res.status(200).render('signUp', {
+    title: 'signUp page',
+  });
+});
+
 
 exports.userAccount = catchAsync(async(req, res, next)=>{
   res.status(200).render('userAccount', {

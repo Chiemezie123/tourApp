@@ -49,6 +49,7 @@ router
 router
 .route('/distances/:latlong/unit/:unit')
 .get(getDistance)
+
 router
 .route('/')
 .get(getAllTours)

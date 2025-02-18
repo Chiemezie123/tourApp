@@ -1,9 +1,7 @@
 const express = require('express');
-// const { deleteUser } = require('../controller/userController');
 const router = express.Router();
 const userController = require(`${__dirname}/../controller/userController`);
 const authController = require(`${__dirname}/../controller/authController`);
-
 
 const {
   getAllUsers,
@@ -16,6 +14,8 @@ const {
   updateExistingDocuments,
   userUploadImage
 } = userController;
+
+
 
 const {
   signUp,
@@ -53,7 +53,7 @@ router.delete('/deleteMe', restriction('user'), deleteMe);
 
 router.get('/getMe', getMe, getUser);
 
-// router.post('/resetPassword', resetPassword)
+
 
 router.route('/').get(restriction('admin', 'lead-guide'), getAllUsers);
 

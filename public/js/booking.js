@@ -44,19 +44,9 @@ export const bookingSession = async (api, tourId) => {
     redirectToCheckout(sessionId);
     showAlert('success', data.status);
   } catch (error) {
-    console.log(error, 'wetin sup');
-    showAlert('error', error);
+    const {message} = error.response.data
+    console.log(message, 'wetin sup');
+    showAlert('error', message);
   }
 };
 
-const handleBooking = async (api, tourId) => {
-  try {
-    const { data } = await api.get(
-      `/api/v1/bookings/checkout-session/${tourId}`
-    );
-    const sessionId = data.session.id;
-    redirectToCheckout(sessionId);
-  } catch (error) {
-    console.error('Error fetching checkout session:', error.message);
-  }
-};

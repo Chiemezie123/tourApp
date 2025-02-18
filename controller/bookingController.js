@@ -23,6 +23,13 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   console.log('Success URL:', successUrl);
   console.log('Cancel URL:', cancelUrl);
 
+const getBookingBelongingToTourId = await Bookings.find({tour:tourId});
+const hasUserBookedTour = getBookingBelongingToTourId.find((element) => element.user._id.toString()  === req.user.id.toString());
+if(hasUserBookedTour){
+  const {user:{_id}}= hasUserBookedTour;
+  if(_id) return next(new AllError('user has already booked this tour', 403))
+}
+
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {

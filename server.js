@@ -26,7 +26,7 @@ mongoose
 //EACH THERE IS AN UNHANDLED PROMISE REJECTION. THE PROCESS OBJECT
 // EMIT AND OBJECT CALLED UNHANDLED REJECTION
 
-const port = 3000;
+const port = 3002;
 const server = app.listen(port, () => {
   console.log('app running on port');
 });

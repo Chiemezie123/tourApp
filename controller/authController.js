@@ -16,15 +16,16 @@ const getToken = (id) => {
   });
 };
 
-const sendTokenGenerated = (user, statusCode, res) => {
+
+
+const sendTokenGenerated = (user, statusCode,res) => {
   const token = getToken(user._id);
   const cookieOptions = {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIES_EXPIRE * 24 * 60 * 60 * 1000
-    ),
+    expires: new Date(Date.now() + process.env.JWT_COOKIES_EXPIRE * 24 * 60 * 60 * 1000 ),
     httpOnly: true,
     secure: false,
   };
+
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions);
@@ -39,8 +40,8 @@ const sendTokenGenerated = (user, statusCode, res) => {
 };
 
 exports.signUp = catchAsync(async (req, res, next) => {
-  const { name, email, password, confirmPassword, createdPasswordAt, role } =
-    req.body;
+  const { name, email, password, confirmPassword, createdPasswordAt, role } = req.body;
+
   const newUser = {
     name,
     email,
@@ -66,6 +67,8 @@ exports.signUp = catchAsync(async (req, res, next) => {
     // })
   }
 });
+
+
 //a cookie is bascially just a small piece of text that server can send to client
 // then when client receives its stores it and sends it back in all future request to the server
 
@@ -88,7 +91,7 @@ exports.logIn = catchAsync(async (req, res, next) => {
     const message = new AllError(`incorrect password or email`, 401);
     return next(message);
   }
-  const token = getToken(user._id);
+  // const token = getToken(user._id);
   if (user) {
     sendTokenGenerated(user, 200, res);
   }
